@@ -122,7 +122,7 @@ class ProductAPIView(APIView):
                 type=openapi.TYPE_STRING,
                 description='Order by price_min, price_max, discount, ordered, rating, created_at_first,' +
                             ' created_at_last ',
-                enum=['price_min', 'price_max', 'discount', 'ordered', 'r   ating', 'created_at_first',
+                enum=['price_min', 'price_max', 'discount', 'ordered', 'rating', 'created_at_first',
                       'created_at_last', ]
             ),
         ]
@@ -172,4 +172,11 @@ class ProductAPIView(APIView):
                 products = products.order_by('-created_at')
 
         serializer = ProdoctSerializer(products, many=True)
+        return Response(serializer.data)
+
+
+class ProductDetailsAPIView(APIView):
+    def get(self, request, product_id):
+        product = get_object_or_404(Product, id=product_id)
+        serializer = ProdoctSerializer(product)
         return Response(serializer.data)
