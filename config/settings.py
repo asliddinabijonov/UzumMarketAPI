@@ -191,7 +191,7 @@ SIMPLE_JWT = {
 
 SWAGGER_SETTINGS = {
     'DEFAULT_API_URL': '',
-    'SECURITY_DEFAINITIONS': {
+    'SECURITY_DEFINITIONS': {
         'Bearer': {
             'type': 'apiKey',
             'name': 'Authorization',
